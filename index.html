@@ -5,26 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body { font-family: sans-serif; text-align: center; padding: 50px; background: #f5f5f5; }
-        .card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: inline-block; }
+        .card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         .btn { background: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 20px; }
     </style>
 </head>
 <body>
     <div class="card">
-        <h2>Opening in SV Cards App...</h2>
-        <p>If the app didn't open automatically, make sure you have it installed.</p>
-        <a href="https://play.google.com/store" class="btn">Download App from Play Store</a>
+        <h2>Redirecting to SV Cards...</h2>
+        <p>If you don't have the app, please download it below.</p>
+        <a href="https://play.google.com/store/apps/details?id=com.svc.app" class="btn">Download from Play Store</a>
     </div>
 
     <script>
-        // Fallback execution: If the user is on mobile, try to force-open via intent scheme
         window.onload = function() {
-            var currentUrl = window.location.href;
-            // Converts https://username.github.io/home/main/abcd -> svc://home/main/abcd
-            var appUrl = currentUrl.replace("https://yourusername.github.io", "svc://");
+            // Get path from URL parameter (if coming from 404) or current location
+            const urlParams = new URLSearchParams(window.location.search);
+            const path = urlParams.get('path') || window.location.pathname;
             
-            // Try to redirect to the app using custom scheme
-            window.location.href = appUrl;
+            // Construct the deep link: svc://svcards.github.io/home/main/cardno
+            // Ensure this matches your Android Intent Filter host/scheme
+            const deepLink = "svc://" + "svcards.github.io" + path;
+            
+            // Attempt to open the app
+            window.location.href = deepLink;
         };
     </script>
 </body>

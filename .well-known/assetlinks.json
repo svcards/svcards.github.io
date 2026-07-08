@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.svc.app",
+      "sha256_cert_fingerprints": [
+        "78:C8:B4:8D:D1:4C:3E:6F:C6:21:B3:1E:BB:41:AB:E8:A1:E8:96:70:89:64:82:90:BF:B8:E0:D1:91:3B:F1:6F"
+      ]
+    }
+  }
+]
